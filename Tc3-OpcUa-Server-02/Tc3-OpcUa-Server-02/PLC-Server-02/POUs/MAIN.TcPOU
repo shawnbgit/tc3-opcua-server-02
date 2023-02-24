@@ -1,0 +1,326 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <POU Name="MAIN" Id="{131d21c7-b1a0-4cb0-831f-e4bdf27f09c8}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+{attribute 'OPC.UA.DA':='1'}	
+	Motor : ARRAY [0..4] OF ST_Motor;
+{attribute 'OPC.UA.DA':='1'}
+	fbMath : ARRAY [0..4] OF FB_Math;
+	
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[MAIN.aMotor_0();
+MAIN.aMotor_1();
+MAIN.aMotor_2();
+MAIN.aMotor_3();
+MAIN.aMotor_4();]]></ST>
+    </Implementation>
+    <Action Name="aMotor_0" Id="{16b8f944-711f-45fc-90a7-db46ce02c160}">
+      <Implementation>
+        <ST><![CDATA[// Motor 0 - Function Blocks ///////////////////////////////////////////////////////////
+
+IF Motor[0].ctrl.velo > 2000 THEN
+	Motor[0].ctrl.velo := 2000;
+ELSIF Motor[0].ctrl.velo < 0 THEN
+	Motor[0].ctrl.velo := 50;
+END_IF
+
+Motor[0].ref.ReadStatus();
+
+
+Motor[0].fbPower(
+	Axis:= Motor[0].ref, 
+	Enable:= Motor[0].ctrl.power, 
+	Enable_Positive:= Motor[0].ctrl.power, 
+	Enable_Negative:= Motor[0].ctrl.power, 
+	Status=> , 
+	Busy=> , 
+	Active=> , 
+	Error=> , 
+	ErrorID=>
+	);
+	
+Motor[0].fbStart(
+	Axis:= Motor[0].ref, 
+	Execute:=  Motor[0].ctrl.start, 
+	Velocity:=  Motor[0].ctrl.velo, 
+	Acceleration:= 500, 
+	Deceleration:= 500, 
+	Jerk:= 1000, 
+	InVelocity=> , 
+	Busy=> , 
+	Active=> , 
+	CommandAborted=> , 
+	Error=> , 
+	ErrorID=> );
+	
+Motor[0].fbStop(
+	Axis:= Motor[0].ref, 
+	Execute:= Motor[0].ctrl.stop , 
+	Deceleration:= 1000, 
+	Jerk:= 1000, 
+	Options:= , 
+	Done=> , 
+	Busy=> , 
+	Active=> , 
+	CommandAborted=> , 
+	Error=> , 
+	ErrorID=> );
+	
+Motor[0].fbReset(
+	Axis:= Motor[0].ref, 
+	Execute:= Motor[0].ctrl.reset, 
+	Done=> , 
+	Busy=> , 
+	Error=> , 
+	ErrorID=> );]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="aMotor_1" Id="{aa36ce48-7cbc-465d-a611-e79e03a870c2}">
+      <Implementation>
+        <ST><![CDATA[// Motor 1 - Function Blocks ///////////////////////////////////////////////////////////
+
+IF Motor[1].ctrl.velo > 2000 THEN
+	Motor[1].ctrl.velo := 2000;
+ELSIF Motor[1].ctrl.velo < 0 THEN
+	Motor[1].ctrl.velo := 50;
+END_IF
+
+Motor[1].ref.ReadStatus();
+
+
+Motor[1].fbPower(
+	Axis:= Motor[1].ref, 
+	Enable:= Motor[1].ctrl.power, 
+	Enable_Positive:= Motor[1].ctrl.power, 
+	Enable_Negative:= Motor[1].ctrl.power, 
+	Status=> , 
+	Busy=> , 
+	Active=> , 
+	Error=> , 
+	ErrorID=>
+	);
+	
+Motor[1].fbStart(
+	Axis:= Motor[1].ref, 
+	Execute:=  Motor[1].ctrl.start, 
+	Velocity:=  Motor[1].ctrl.velo, 
+	Acceleration:= 500, 
+	Deceleration:= 500, 
+	Jerk:= 1000, 
+	InVelocity=> , 
+	Busy=> , 
+	Active=> , 
+	CommandAborted=> , 
+	Error=> , 
+	ErrorID=> );
+	
+Motor[1].fbStop(
+	Axis:= Motor[1].ref, 
+	Execute:= Motor[1].ctrl.stop , 
+	Deceleration:= 1000, 
+	Jerk:= 1000, 
+	Options:= , 
+	Done=> , 
+	Busy=> , 
+	Active=> , 
+	CommandAborted=> , 
+	Error=> , 
+	ErrorID=> );
+	
+Motor[1].fbReset(
+	Axis:= Motor[1].ref, 
+	Execute:= Motor[1].ctrl.reset, 
+	Done=> , 
+	Busy=> , 
+	Error=> , 
+	ErrorID=> );]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="aMotor_2" Id="{f4718ad0-de80-4c64-8f00-14273b4f6346}">
+      <Implementation>
+        <ST><![CDATA[// Motor 2 - Function Blocks ///////////////////////////////////////////////////////////
+
+IF Motor[2].ctrl.velo > 2000 THEN
+	Motor[2].ctrl.velo := 2000;
+ELSIF Motor[2].ctrl.velo < 0 THEN
+	Motor[2].ctrl.velo := 50;
+END_IF
+
+Motor[2].ref.ReadStatus();
+
+
+Motor[2].fbPower(
+	Axis:= Motor[2].ref, 
+	Enable:= Motor[2].ctrl.power, 
+	Enable_Positive:= Motor[2].ctrl.power, 
+	Enable_Negative:= Motor[2].ctrl.power, 
+	Status=> , 
+	Busy=> , 
+	Active=> , 
+	Error=> , 
+	ErrorID=>
+	);
+	
+Motor[2].fbStart(
+	Axis:= Motor[2].ref, 
+	Execute:=  Motor[2].ctrl.start, 
+	Velocity:=  Motor[2].ctrl.velo, 
+	Acceleration:= 500, 
+	Deceleration:= 500, 
+	Jerk:= 1000, 
+	InVelocity=> , 
+	Busy=> , 
+	Active=> , 
+	CommandAborted=> , 
+	Error=> , 
+	ErrorID=> );
+	
+Motor[2].fbStop(
+	Axis:= Motor[2].ref, 
+	Execute:= Motor[2].ctrl.stop , 
+	Deceleration:= 1000, 
+	Jerk:= 1000, 
+	Options:= , 
+	Done=> , 
+	Busy=> , 
+	Active=> , 
+	CommandAborted=> , 
+	Error=> , 
+	ErrorID=> );
+	
+Motor[2].fbReset(
+	Axis:= Motor[2].ref, 
+	Execute:= Motor[2].ctrl.reset, 
+	Done=> , 
+	Busy=> , 
+	Error=> , 
+	ErrorID=> );]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="aMotor_3" Id="{b9e8054d-d185-41b1-bea3-3c8b3f128763}">
+      <Implementation>
+        <ST><![CDATA[// Motor 3 - Function Blocks ///////////////////////////////////////////////////////////
+
+IF Motor[3].ctrl.velo > 2000 THEN
+	Motor[3].ctrl.velo := 2000;
+ELSIF Motor[3].ctrl.velo < 0 THEN
+	Motor[3].ctrl.velo := 50;
+END_IF
+
+Motor[3].ref.ReadStatus();
+
+
+Motor[3].fbPower(
+	Axis:= Motor[3].ref, 
+	Enable:= Motor[3].ctrl.power, 
+	Enable_Positive:= Motor[3].ctrl.power, 
+	Enable_Negative:= Motor[3].ctrl.power, 
+	Status=> , 
+	Busy=> , 
+	Active=> , 
+	Error=> , 
+	ErrorID=>
+	);
+	
+Motor[3].fbStart(
+	Axis:= Motor[3].ref, 
+	Execute:=  Motor[3].ctrl.start, 
+	Velocity:=  Motor[3].ctrl.velo, 
+	Acceleration:= 500, 
+	Deceleration:= 500, 
+	Jerk:= 1000, 
+	InVelocity=> , 
+	Busy=> , 
+	Active=> , 
+	CommandAborted=> , 
+	Error=> , 
+	ErrorID=> );
+	
+Motor[3].fbStop(
+	Axis:= Motor[3].ref, 
+	Execute:= Motor[3].ctrl.stop , 
+	Deceleration:= 1000, 
+	Jerk:= 1000, 
+	Options:= , 
+	Done=> , 
+	Busy=> , 
+	Active=> , 
+	CommandAborted=> , 
+	Error=> , 
+	ErrorID=> );
+	
+Motor[3].fbReset(
+	Axis:= Motor[3].ref, 
+	Execute:= Motor[3].ctrl.reset, 
+	Done=> , 
+	Busy=> , 
+	Error=> , 
+	ErrorID=> );]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="aMotor_4" Id="{c2ed4b0f-38d3-4e86-9b28-972815b33ae2}">
+      <Implementation>
+        <ST><![CDATA[// Motor 4 - Function Blocks ///////////////////////////////////////////////////////////
+
+IF Motor[4].ctrl.velo > 2000 THEN
+	Motor[4].ctrl.velo := 2000;
+ELSIF Motor[4].ctrl.velo < 0 THEN
+	Motor[4].ctrl.velo := 50;
+END_IF
+
+Motor[4].ref.ReadStatus();
+
+
+Motor[4].fbPower(
+	Axis:= Motor[4].ref, 
+	Enable:= Motor[4].ctrl.power, 
+	Enable_Positive:= Motor[4].ctrl.power, 
+	Enable_Negative:= Motor[4].ctrl.power, 
+	Status=> , 
+	Busy=> , 
+	Active=> , 
+	Error=> , 
+	ErrorID=>
+	);
+	
+Motor[4].fbStart(
+	Axis:= Motor[4].ref, 
+	Execute:=  Motor[4].ctrl.start, 
+	Velocity:=  Motor[4].ctrl.velo, 
+	Acceleration:= 500, 
+	Deceleration:= 500, 
+	Jerk:= 1000, 
+	InVelocity=> , 
+	Busy=> , 
+	Active=> , 
+	CommandAborted=> , 
+	Error=> , 
+	ErrorID=> );
+	
+Motor[4].fbStop(
+	Axis:= Motor[4].ref, 
+	Execute:= Motor[4].ctrl.stop , 
+	Deceleration:= 1000, 
+	Jerk:= 1000, 
+	Options:= , 
+	Done=> , 
+	Busy=> , 
+	Active=> , 
+	CommandAborted=> , 
+	Error=> , 
+	ErrorID=> );
+	
+Motor[4].fbReset(
+	Axis:= Motor[4].ref, 
+	Execute:= Motor[4].ctrl.reset, 
+	Done=> , 
+	Busy=> , 
+	Error=> , 
+	ErrorID=> );]]></ST>
+      </Implementation>
+    </Action>
+  </POU>
+</TcPlcObject>

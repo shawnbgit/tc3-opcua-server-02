@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <POU Name="FB_Math" Id="{d21c0b8e-6469-45a1-ba1e-9bee226b3d60}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Math
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	{attribute 'OPC.UA.DA':='1'}
+	nNumberOfCallsMMul : INT;
+	{attribute 'OPC.UA.DA':='1'}
+	nNumberOfCallsMAdd : INT;
+	{attribute 'OPC.UA.DA':='1'}
+	nNumberOfCallsMRpm : INT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="M_Add" Id="{1e1b49ec-5f56-4257-ba09-e8dd62db2c6f}">
+      <Declaration><![CDATA[{attribute 'TcRpcEnable':='1'}
+METHOD M_Add : DINT
+VAR_INPUT
+	a : INT;
+	b : INT;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[M_Add := a + b;
+nNumberOfCallsMAdd := nNumberOfCallsMAdd + 1;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="M_Mul" Id="{ce515e7e-be6c-41f1-9c46-1955d83b401d}">
+      <Declaration><![CDATA[{attribute 'TcRpcEnable':='1'}
+METHOD M_Mul : DINT
+VAR_INPUT
+	a : INT;
+	b : INT;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[M_Mul := a * b;
+nNumberOfCallsMMul := nNumberOfCallsMMul + 1;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="M_Rpm" Id="{63435d25-8cf9-4de1-b56f-5b99f79ae5e2}">
+      <Declaration><![CDATA[{attribute 'TcRpcEnable':='1'}
+METHOD M_Rpm : DINT
+VAR_INPUT
+	motorSpeed : DINT;
+	gearboxRatio : DINT;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[M_Rpm := motorSpeed/gearboxRatio;
+nNumberOfCallsMRpm := nNumberOfCallsMRpm + 1;]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>
